@@ -34,17 +34,26 @@ String::tokens = ->
   STRING = /('(\\.|[^'])*'|"(\\.|[^"])*")/g
   ONELINECOMMENT = /\/\/.*/g
   MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g
-  ONECHAROPERATORS = /([-+*\/=()&|;:,<>{}[\]])/g
+  ONECHAROPERATORS = /([=()&|;:,<>{}[\]])/g 
+  ADDOP = /[*\/]/g
+  MULTOP = /[+-]/g
+  COMPARISON = /[[<>=!]=|[<>]/g # Revisar las expresiones regulares
   tokens = [
-    WHITES
-    ID
-    NUM
-    STRING
-    ONELINECOMMENT
+    ADDOP
+    COMPARISON
     MULTIPLELINECOMMENT
+    ID
+    MULTOP
+    NUM
     ONECHAROPERATORS
+    ONELINECOMMENT
+    STRING
+    WHITES
   ]
-  RESERVED_WORD = p: "P"
+  RESERVED_WORD = # Revisar
+    p: "P"
+    if: "IF" # Cofee la entrecomilla automáticamente, por ser una palabra reservada de javascript
+    then: "THEN"
   
   # Make a token object.
   make = (type, value) ->
@@ -96,7 +105,18 @@ String::tokens = ->
     else if m = STRING.bexec(this)
       result.push make("STRING", 
                         getTok().replace(/^["']|["']$/g, ""))
-    
+    # addop
+    else if m = ADDOP.bexec(this)
+      result.push make("ADDOP", getTok())
+      
+    # multop
+    else if m = MULTOP.bexec(this)
+      result.push make("MULTOP", getTok())
+      
+    # comparison
+    else if m = COMPARISON.bexec(this)
+      result.push make("COMPARISON", getTok())
+      
     # single-character operator
     else if m = ONECHAROPERATORS.bexec(this)
       result.push make(m[0], getTok())
@@ -144,30 +164,51 @@ parse = (input) ->
       result =
         type: "P"
         value: right
+    else if lookahead and lookahead.type is "IF" # Falta el token IF
+      match "IF" # Se pueden pasar argumentos sin paréntesis, pero si no recibe ninguno, hay que ponerlo.
+      left = condition() # Falta implementarlo
+      match "THEN"
+      right = statement()
+      result =
+	type: 
+	left: left
+	right: right
     else # Error!
       throw "Syntax Error. Expected identifier but found " + 
         (if lookahead then lookahead.value else "end of input") + 
         " near '#{input.substr(lookahead.from)}'"
     result
 
+  condition = ->
+    left = expression()
+    type = lookahead.value # Se obtiene el operador de la condición
+    match "COMPARISON"
+    right = expression()
+    result = # Coffee le ha colocado un return D:
+      type: type
+      left: left
+      right: right
+  
   expression = ->
     result = term()
-    if lookahead and lookahead.type is "+"
-      match "+"
-      right = expression()
+    while lookahead and lookahead.type is "ADDOP"
+      op = lookahead.value
+      match "ADDOP"
+      right = term()
       result =
-        type: "+"
+        type: op
         left: result
         right: right
     result
 
   term = ->
     result = factor()
-    if lookahead and lookahead.type is "*"
-      match "*"
-      right = term()
+    while lookahead and lookahead.type is "MULTOP"
+      op = lookahead.value
+      match "MULTOP"
+      right = factor()
       result =
-        type: "*"
+        type: op
         left: result
         right: right
     result
