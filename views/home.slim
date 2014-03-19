@@ -20,11 +20,7 @@ p This website contains a simple example of a predictive parser
       input#files type="file" 
 
   javascript:
-        var editor = CodeMirror.fromTextArea(document.getElementById("original"), {
-          lineNumbers: true,
-          viewportMargin: Infinity
-        });
-        
+              
         function dump(fileName) {
           $.get(fileName, function (data) {
             $("#original").val(data);
