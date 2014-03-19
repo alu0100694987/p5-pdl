@@ -178,14 +178,14 @@ parse = (input) ->
   procedure = ->
     match "PROCEDURE"
     if lookahead and lookahead.type is "ID"
-      left = lookahead.value
+      value = lookahead.value
       match "ID"
       match ";"
-      right = block()
+      left = block()
       result =
-	type: "ID"
-	left: left
-	right: right
+        type: "PROCEDURE"
+        value: value
+        left: left
       match ";"
     else # Error!
       throw "Syntax Error. Expected identifier but found " + 
@@ -196,8 +196,8 @@ parse = (input) ->
   variable = ->
     if lookahead and lookahead.type is "ID"
       result =
-	type: "VAR ID"
-	value: lookahead.value
+        type: "VAR ID"
+        value: lookahead.value
       match "ID"
     else # Error!
       throw "Syntax Error. Expected identifier but found " + 
@@ -208,15 +208,15 @@ parse = (input) ->
   constant = ->
     if lookahead and lookahead.type is "ID"
       left =
-	type: "CONST ID"
-	value: lookahead.value
+        type: "CONST ID"
+        value: lookahead.value
       match "ID"
       match "="
       if lookahead and lookahead.type is "NUM"
-	right =
-	  type: "NUM"
-	  value: lookahead.value
-	match "NUM"
+        right =
+          type: "NUM"
+          value: lookahead.value
+        match "NUM"
       else # Throw exception
         throw "Syntax Error. Expected number but found " + 
           (if lookahead then lookahead.value else "end of input") + 
@@ -263,9 +263,9 @@ parse = (input) ->
       match "THEN"
       right = statement()
       result =
-	type: 
-	left: left
-	right: right
+        type: "IF"
+        left: left
+        right: right
 	
     else if lookahead and lookahead.type is "WHILE"
       match "WHILE"
@@ -287,10 +287,9 @@ parse = (input) ->
     else if lookahead and lookahead.type is "BEGIN"
       match "BEGIN"
       result = [statement()]
-      match ";"
-      while lookahead and lookahead.tye isnt "END"
-	result.push statement()
-	match ";"
+      while lookahead and lookahead.type is ";"
+        match ";"
+        result.push statement()
       match "END"
 
     else # Error!
@@ -312,9 +311,9 @@ parse = (input) ->
       match "COMPARISON"
       right = expression()
       result =
-	type: type
-	left: left
-	right: right
+        type: type
+        left: left
+        right: right
     result
 
   expression = ->
