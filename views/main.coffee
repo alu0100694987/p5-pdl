@@ -34,6 +34,7 @@ String::tokens = ->
   STRING = /('(\\.|[^'])*'|"(\\.|[^"])*")/g
   ONELINECOMMENT = /\/\/.*/g
   MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g
+  COMPARISONOPERATOR: /[<>=!]=|[<>]/g
   ONECHAROPERATORS = /([-+*\/=()&|;:,<>{}[\]])/g
   tokens = [
     WHITES
@@ -42,6 +43,7 @@ String::tokens = ->
     STRING
     ONELINECOMMENT
     MULTIPLELINECOMMENT
+    COMPARISONOPERATOR
     ONECHAROPERATORS
   ]
   RESERVED_WORD = p: "P"
@@ -96,7 +98,9 @@ String::tokens = ->
     else if m = STRING.bexec(this)
       result.push make("STRING", 
                         getTok().replace(/^["']|["']$/g, ""))
-    
+    #operadores de comparasión
+     else if m = tokens.COMPARISONOPERATOR.bexec(this)
+      result.push make("COMPARISON", getTok())
     # single-character operator
     else if m = ONECHAROPERATORS.bexec(this)
       result.push make(m[0], getTok())
@@ -227,48 +231,16 @@ parse = (input) ->
       result =
         type: "odd"
         value: right
-    if lookahead and lookahead.type is "#"
-      match "#"
+    else
+      left = expression()
+      type = lookahead.value
+      match "COMPARISON"
       right = expression()
       result =
-        type: "#"
-        left: result
+        type: type
+        left: left
         right: right
-    if lookahead and lookahead.type is "="
-      match "="
-      right = expression()
-      result =
-        type: "="
-        left: result
-        right: right
-    if lookahead and lookahead.type is ">"
-      match ">"
-      right = expression()
-      result =
-        type: ">"
-        left: result
-        right: right
-    if lookahead and lookahead.type is ">="
-      match ">="
-      right = expression()
-      result =
-        type: ">="
-        left: result
-        right: right
-    if lookahead and lookahead.type is "<"
-      match "<"
-      right = expression()
-      result =
-        type: "<"
-        left: result
-        right: right    
-    if lookahead and lookahead.type is "<="
-      match "<="
-      right = expression()
-      result =
-        type: "<="
-        left: result
-        right: right
+    result
         
   factor = ->
     result = null
