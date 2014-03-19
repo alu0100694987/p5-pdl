@@ -19,12 +19,10 @@ p This website contains a simple example of a predictive parser
         | Fichero Error
       input#files type="file" 
 
-  javascript:
-              
+  javascript:    
         function dump(fileName) {
           $.get(fileName, function (data) {
             $("#original").val(data);
-            editor.setValue(data);
            });
         };
 
