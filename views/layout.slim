@@ -9,13 +9,15 @@ html lang="en"
     == css :styles
     link rel="icon" type="image/x-icon" href="images/favicon.ico" 
     link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection" rel="stylesheet"
+    link rel="stylesheet" href="lib/codemirror.css"
     script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"
     script src="/javascripts/main.js"
     
     /! Tests
     script src="tests/chai.js" 
-    script src="tests/mocha.js" 
+    script src="tests/mocha.js"
+    script src="lib/codemirror.js"
     javascript:
         | mocha.setup('tdd')      %script{:src => "/tests/tests.js"}
     
