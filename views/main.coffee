@@ -148,13 +148,13 @@ parse = (input) ->
       result =
         type: "P"
         value: right
-    else if lookahead and lookahead.type is "call"
-      match "call"
-      right = statement() #duda
-      match "ID"
+    else if lookahead and lookahead.type is "CALL"
+      match "CALL"
       result =
-        type: "call"
-        right: right
+        type: "CALL"
+        right: lookahead.value
+      match "ID"
+      
     else if lookahead and lookahead.type is "while"
       match "while"
       right = condition()
