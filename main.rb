@@ -4,6 +4,10 @@ require 'sass'
 require 'v8'
 require 'coffee-script'
 
+before do
+  set_title
+end
+
 helpers do
   def css(*stylesheets)
     stylesheets.map do |stylesheet| 
@@ -18,6 +22,10 @@ helpers do
   
   def current?(path='/')
     (request.path==path || request.path==path+'/') ? "current" : nil
+  end
+  
+  def set_title
+    @title ||= "Analizador L&eacute;xico JavaScript"
   end
 end
 
