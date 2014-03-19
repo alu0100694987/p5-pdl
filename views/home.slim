@@ -2,20 +2,21 @@ p This website contains a simple example of a predictive parser
 /img src="/images/st.gif" alt="Syntax Tree"
 #header.header
   p
-    | Load example to parse
+    | Carge el ejemplo a analizar:
   div
-    textarea#original[autofocus cols="80" rows="5"]
-  br
+    p 
+      textarea#original[autofocus cols="80" rows="5"]
+
   div
     .loadfile
-      button#example1[type="button" onclick="dump('/examples/example1.txt');"]
-        | example1
-      button#example2[type="button" onclick="dump('/examples/example2.txt');"]
-        | example2
-      button#example3[type="button" onclick="dump('/examples/example3.txt');"]
-        | example3
-      button#exampleerr[type="button" onclick="dump('/examples/example_err.txt');"]
-        | example_err
+      button#fichero1[type="button" onclick="dump('/examples/fichero1.txt');"]
+        | Fichero 1
+      button#fichero22[type="button" onclick="dump('/examples/fichero2.txt');"]
+        | Fichero 2
+      button#fichero3[type="button" onclick="dump('/examples/fichero3.txt');"]
+        | Fichero 3
+      button#ficheroerror[type="button" onclick="dump('/examples/ficheroerror.txt');"]
+        | Fichero Error
       input#files type="file" 
 
     javascript:

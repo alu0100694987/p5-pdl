@@ -1,19 +1,36 @@
 doctype html
-html lang="en"
+html
   head
-    title== @title
+    title Analizador L&eacute;xico JavaScript
     meta charset="utf-8"
+    meta name="Author" content=("Cristo Gonz&aacute;lez Rodr&iacute;guez - alu0100694987 | Sawan J. Kapai Harpalani - alu0100694765") 
+    meta name="Description" content=("Analizador Sint&aacute;ctico Descendente Predictivo Recursivo") 
+
     == css :styles
-    link rel="icon" type="image/jpg" href="images/favicon.jpg" 
+    link rel="icon" type="image/x-icon" href="images/favicon.ico" 
     link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection" rel="stylesheet"
     script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"
     script src="/javascripts/main.js"
+    
+    /! Tests
+    script src="tests/chai.js" 
+    script src="/tests/mocha.js" 
+    script src="script/main.js" 
+    script src="script/tokens.js"
+    javascript:
+        | mocha.setup('tdd')      %script{:src => "/tests/tests.js"}
+    
   body
     header
-      h1 Predictive Recursive Descent Parser
+      h1 Analizador Sint&aacute;ctico Descendente Predictivo Recursivo
       == slim :nav
     section
       == yield
-    /!footer
+    footer
+      #piedepagina
+        Pr&aacute;ctica: Analizador Sint&aacute;ctico Descendente Predictivo Recursivo - PDL \
+        a href="https://github.com/alu0100694987/p5-pdl"  https://github.com/alu0100694987/p5-pdl/
+        br
+
         a href="/" back to main

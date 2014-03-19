@@ -4,10 +4,6 @@ require 'sass'
 require 'v8'
 require 'coffee-script'
 
-before do
-  set_title
-end
-
 helpers do
   def css(*stylesheets)
     stylesheets.map do |stylesheet| 
@@ -23,10 +19,6 @@ helpers do
   def current?(path='/')
     (request.path==path || request.path==path+'/') ? "current" : nil
   end
-  
-  def set_title
-    @title ||= "Predictive Recursive Descent Parser"
-  end
 end
 
 get('/styles.css'){ scss :styles }
@@ -36,8 +28,12 @@ get '/' do
   slim :home
 end
 
-get '/grammar' do
-  slim :grammar
+get '/gramatica' do
+  slim :gramatica
+end
+
+get '/tests' do
+  slim :tests
 end
 
 not_found do
