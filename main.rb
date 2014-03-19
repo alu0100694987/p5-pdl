@@ -25,7 +25,7 @@ helpers do
   end
   
   def set_title
-    @title ||= "Analizador L&eacute;xico JavaScript"
+    @title ||= "Analizador Sint&aacute;ctico Descendente Predictivo Recursivo"
   end
 end
 

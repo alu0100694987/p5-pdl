@@ -21,7 +21,7 @@ ol
       li
         |  statement $ \rightarrow$ ID '=' expression $\vert$ CALL ID $\vert$ BEGIN statement ';' {statement ';'} END $\vert$ IF condition THEN statment $\vert$ WHILE condition DO statment
       li
-        |  condition $ \rightarrow$ ODD expression $\vert$ expression '(==|#|<|>|<=|>=|!=)' expression
+        |  condition $ \rightarrow$ ODD expression $\vert$ expression '(==|<|>|<=|>=|!=)' expression
       li
         |  expression $ \rightarrow$ term '(+|-)' expression $\vert$ term 
       li
