@@ -144,6 +144,39 @@ parse = (input) ->
       result =
         type: "P"
         value: right
+    else if lookahead and lookahead.type is "call"
+      match "call"
+      right = statement() #duda
+      match "ID"
+      result =
+        type: "call"
+        right: right
+    else if lookahead and lookahead.type is "while"
+      match "while"
+      right = condition()
+      match "do"
+      left = statement()
+      result =
+        type: "while"
+        right: right
+        left: left
+    else if lookahed and lookahead.type is "begin"
+      match "begin"
+      right = statement()
+      match ";"
+      match "end"
+      result =
+        type: "begin"
+        right: right
+    else if lookahead and lookahead.type is "if"
+      match "if"
+      right = condition()
+      match "then"
+      left = statement()
+      result =
+        type: "begin"
+        right: right
+        left: left
     else # Error!
       throw "Syntax Error. Expected identifier but found " + 
         (if lookahead then lookahead.value else "end of input") + 
