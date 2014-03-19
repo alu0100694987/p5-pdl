@@ -370,3 +370,5 @@ parse = (input) ->
       "Expected 'end of input' and found '" + 
       input.substr(lookahead.from) + "'"  
   tree
+  
+window.parse = parse
