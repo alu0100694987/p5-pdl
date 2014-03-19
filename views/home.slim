@@ -22,12 +22,12 @@ p This website contains a simple example of a predictive parser
   javascript:
         var editor = CodeMirror.fromTextArea(document.getElementById("original"), {
           lineNumbers: true,
-          viewportMargin: Infinity,
+          viewportMargin: Infinity
         });
         
         function dump(fileName) {
           $.get(fileName, function (data) {
-            //$("#original").val(data);
+            $("#original").val(data);
             editor.setValue(data);
            });
         };
