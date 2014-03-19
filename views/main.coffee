@@ -47,6 +47,16 @@ String::tokens = ->
     ONECHAROPERATORS
   ]
   RESERVED_WORD = p: "P"
+    "if": "IF"
+    then: "THEN"
+    "begin": "BEGIN"
+    "end": "END"
+    "while": "WHILE"
+    "do": "DO"
+    "call": "CALL"
+    "odd": "ODD"
+    "const": "CONST"
+    "var": "VAR"
   
   # Make a token object.
   make = (type, value) ->
@@ -155,30 +165,30 @@ parse = (input) ->
         right: lookahead.value
       match "ID"
       
-    else if lookahead and lookahead.type is "while"
-      match "while"
+    else if lookahead and lookahead.type is "WHILE"
+      match "WHILE"
       right = condition()
-      match "do"
+      match "DO"
       left = statement()
       result =
-        type: "while"
+        type: "WHILE"
         right: right
         left: left
-    else if lookahed and lookahead.type is "begin"
-      match "begin"
+    else if lookahed and lookahead.type is "BEGIN"
+      match "BEGIN"
       right = statement()
       match ";"
-      match "end"
+      match "END"
       result =
-        type: "begin"
+        type: "BEGIN"
         right: right
-    else if lookahead and lookahead.type is "if"
-      match "if"
+    else if lookahead and lookahead.type is "IF"
+      match "IF"
       right = condition()
-      match "then"
+      match "THEN"
       left = statement()
       result =
-        type: "begin"
+        type: "BEGIN"
         right: right
         left: left
     else # Error!
@@ -186,6 +196,39 @@ parse = (input) ->
         (if lookahead then lookahead.value else "end of input") + 
         " near '#{input.substr(lookahead.from)}'"
     result
+
+
+  block =->
+    if lookahead and lookahead.type is "CONST"
+        match "CONST"
+        result = [constant()]
+        while lookahead and lookahead.type is ","
+            match ","
+            result.push constant()
+            
+    if lookahead and lookahead.type is "VAR"
+        match "VAR"
+        result = [variable()]
+        while lookahead and lookahead.type is ","
+            match ","
+            result.push variable()
+    else # Error!
+      throw "Syntax Error. in block"
+    (if result.length is 1 then result[0] else result)
+    
+  variable= ->
+    result =
+      type: "VAR"
+      value: lookahead.value
+    match "ID"
+  result
+  
+  constant= ->
+    result =
+      type: "VAR"
+      value: lookahead.value
+    match "ID"
+  result
 
   expression = ->
     result = term()
