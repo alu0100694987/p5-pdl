@@ -1,0 +1,10 @@
+#mocha
+javascript:
+  | mocha.run();
+    javascript:
+  | function dump(fileName) {
+    | $.get(fileName, function (data) {
+      | $("#input").val(data);
+    | });
+  | };
+   
