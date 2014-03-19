@@ -186,6 +186,57 @@ parse = (input) ->
             right: right
     result
 
+  condition = ->
+    result = expression()
+    if lookahead and lookahead.type is "odd"
+      match "odd"
+      right = expression()
+      result =
+        type: "odd"
+        value: right
+    if lookahead and lookahead.type is "#"
+      match "#"
+      right = expression()
+      result =
+        type: "#"
+        left: result
+        right: right
+    if lookahead and lookahead.type is "="
+      match "="
+      right = expression()
+      result =
+        type: "="
+        left: result
+        right: right
+    if lookahead and lookahead.type is ">"
+      match ">"
+      right = expression()
+      result =
+        type: ">"
+        left: result
+        right: right
+    if lookahead and lookahead.type is ">="
+      match ">="
+      right = expression()
+      result =
+        type: ">="
+        left: result
+        right: right
+    if lookahead and lookahead.type is "<"
+      match "<"
+      right = expression()
+      result =
+        type: "<"
+        left: result
+        right: right    
+    if lookahead and lookahead.type is "<="
+      match "<="
+      right = expression()
+      result =
+        type: "<="
+        left: result
+        right: right
+        
   factor = ->
     result = null
     if lookahead.type is "NUM"
