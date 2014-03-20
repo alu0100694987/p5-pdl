@@ -12,9 +12,9 @@ suite('Resultados de los tests: ', function() {
 		assert.equal(OUTPUT.innerHTML, '{\n  "type": "WHILE",\n  "left": {\n    "type": "&gt;",\n    "left": {\n      "type": "NUM",\n      "value": 52\n    },\n    "right": {\n      "type": "NUM",\n      "value": 4\n    }\n  },\n  "right": {\n    "type": "call",\n    "rigth": {\n      "type": "ID",\n      "value": "funcion"\n    }\n  }\n}');
     });
    test('Prueba de error', function() {
-        original.value = "x = 23 + (2; z = 12";
+        original.value = "a = 3 + (4; b = 5";
         main();
-		assert.equal(OUTPUT.innerHTML, '<div class="error">Syntax Error');
+		assert.equal(OUTPUT.innerHTML, '<div class="error">Syntax Error. Expected ) found \';\' near \'; b = 5\'</div>');
     });
     test('Prueba de ID', function() {
         original.value = "nombre = Cristo";
