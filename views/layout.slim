@@ -25,6 +25,30 @@ html lang="en"
     header
       h1 Analizador Sint&aacute;ctico Descendente Predictivo Recursivo
       == slim :nav
+  #cssmenu
+        ul
+          li
+            a href="/" 
+              span Home
+          li
+            a href="/grammar" 
+              span Gramática
+          li
+            a href="/tests" 
+              span Pruebas
+          li
+            a href="https://github.com/alu4102/p5AnalizadorDPR" 
+              span Repositorio
+          li.has-sub.last
+            a href="#" 
+              span Autores
+            ul
+              li
+                a href="https://github.com/alu4102" 
+                  span Sara
+              li.last
+                a href="https://github.com/alu4073" 
+                  span Adrián     
     section
       == yield
     footer
