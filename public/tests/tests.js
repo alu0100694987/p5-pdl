@@ -14,7 +14,7 @@ suite('Resultados de los tests: ', function() {
    test('Prueba de error', function() {
         original.value = "x = 23 + (2; z = 12";
         main();
-		assert.equal(OUTPUT.innerHTML, '<div class="error">Syntax Error. Expected ) found \';\' near \'; x = 23\'</div>');
+		assert.equal(OUTPUT.innerHTML, '<div class="error">Syntax Error');
     });
     test('Prueba de ID', function() {
         original.value = "nombre = Cristo";
