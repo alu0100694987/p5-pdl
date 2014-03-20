@@ -6,10 +6,46 @@ script src="/tests/principal.js"
 <script src="/tests/tests.js"></script>
 javascript:
   mocha.run();
+#header.hidden
+  div
+    textarea#original[autofocus cols="80" rows="5"]
+  div
+    .hidden
+      button#example1[type="button" onclick="dump('/examples/example1.txt');"]
+        | example1
+      button#example2[type="button" onclick="dump('/examples/example2.txt');"]
+        | example2
+      button#example3[type="button" onclick="dump('/examples/example3.txt');"]
+        | example3
+      button#exampleerr[type="button" onclick="dump('/examples/example_err.txt');"]
+        | example_err
+      input#files type="file" 
+
     javascript:
-  function dump(fileName) {
-    $.get(fileName, function (data) {
-      $("#input").val(data);
-    });
-  };
-   
+        function dump(fileName) {
+          $.ajax({
+            url: fileName,
+            cache: false,
+            success: function (data) {
+              $("#original").val(data);
+            }
+          });
+        }
+
+        document.getElementById('files').addEventListener('change', CopyMe, false);
+
+        function CopyMe(evt) {
+          var file = evt.target.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) { 
+              original.innerHTML = e.target.result;
+            }
+            reader.readAsText(file);
+          }
+          else { alert("Failed to load file"); }
+        }
+
+
+input#PARSE.hidden[value="parse" type="button"]
+pre#OUTPUT.hidden
