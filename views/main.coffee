@@ -5,6 +5,7 @@ main = ()->
   catch result
     result = """<div class="error">#{result}</div>"""
 
+  OUTPUT.innerHTML = result
 if window.localStorage
     editor = $(".CodeMirror")[0].CodeMirror
     localStorage.input = editor.getValue()
