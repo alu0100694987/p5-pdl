@@ -5,11 +5,26 @@ main = ()->
   catch result
     result = """<div class="error">#{result}</div>"""
 
-  OUTPUT.innerHTML = result
+ OUTPUT.innerHTML = result
+  if window.localStorage
+    localStorage.INPUT = source
+    localStorage.OUTPUT = result
 
 window.onload = ()-> 
+  if window.localStorage and localStorage.INPUT and localStorage.OUTPUT
+    document.getElementById("original").innerHTML = localStorage.INPUT
+    document.getElementById("OUTPUT").innerHTML = localStorage.OUTPUT
   PARSE.onclick = main
-
+  $("#cssmenu").prepend "<div id=\"menu-button\">Menu</div>"
+  $("#cssmenu #menu-button").on "click", ->
+    menu = $(this).next("ul")
+    if menu.hasClass("open")
+      menu.removeClass "open"
+    else
+      menu.addClass "open"
+    return
+  
+  
 Object.constructor::error = (message, t) ->
   t = t or this
   t.name = "SyntaxError"
