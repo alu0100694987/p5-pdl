@@ -5,24 +5,19 @@ main = ()->
   catch result
     result = """<div class="error">#{result}</div>"""
 
- OUTPUT.innerHTML = result
-  if window.localStorage
-    localStorage.INPUT = source
-    localStorage.OUTPUT = result
+if window.localStorage
+    editor = $(".CodeMirror")[0].CodeMirror
+    localStorage.input = editor.getValue()
+    localStorage.output = result;
+
+window.main = main
 
 window.onload = ()-> 
-  if window.localStorage and localStorage.INPUT and localStorage.OUTPUT
-    document.getElementById("original").innerHTML = localStorage.INPUT
-    document.getElementById("OUTPUT").innerHTML = localStorage.OUTPUT
   PARSE.onclick = main
-  $("#cssmenu").prepend "<div id=\"menu-button\">Menu</div>"
-  $("#cssmenu #menu-button").on "click", ->
-    menu = $(this).next("ul")
-    if menu.hasClass("open")
-      menu.removeClass "open"
-    else
-      menu.addClass "open"
-    return
+  if window.localStorage && localStorage.input && localStorage.output
+    editor = $(".CodeMirror")[0].CodeMirror
+    editor.setValue(localStorage.input)
+    OUTPUT.innerHTML = localStorage.output
   
   
 Object.constructor::error = (message, t) ->
