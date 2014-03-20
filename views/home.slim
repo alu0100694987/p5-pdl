@@ -19,7 +19,7 @@ p This website contains a simple example of a predictive parser
         | Fichero Error
       input#files type="file" 
 
-  javascript:
+    javascript:
         var editor = CodeMirror.fromTextArea(document.getElementById("original"), {
           lineNumbers: true,
           viewportMargin: Infinity
@@ -29,21 +29,21 @@ p This website contains a simple example of a predictive parser
           $.get(fileName, function (data) {
             $("#original").val(data);
             editor.setValue(data);
-           });
+          });
         };
 
-    document.getElementById('files').addEventListener('change', CopyMe, false);
+        document.getElementById('files').addEventListener('change', CopyMe, false);
 
         function CopyMe(evt) {
           var file = evt.target.files[0];
-            if (file) {
-              var reader = new FileReader();
-                reader.onload = function(e) { 
-                  original.innerHTML = e.target.result;
-                    }
-                    var c = reader.readAsText(file);
-                }
-            else { alert("Failed to load file"); }
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) { 
+              original.innerHTML = e.target.result;
+            }
+            var c = reader.readAsText(file);
+          }
+          else { alert("Failed to load file"); }
         }
 
 
