@@ -23,6 +23,24 @@ body {
   margin-right: 20%;
 }
 
+button {
+	/*-webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;*/
+	color:#333;
+	background-color:#BDBDBD;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:none;
+	font-family:'Helvetica Neue',Arial,sans-serif;
+	font-size:16px;
+	font-weight:700;
+	height:32px;
+	padding:4px 16px;
+	/*text-shadow:#FE6 0 1px 0*/
+}
+
 footer {
     position:fixed;
     left:0;
@@ -52,8 +70,8 @@ footer {
 h1 {
   font-family: Andika;
     font-size: 65px;
-    color: white;
-    text-shadow: 0px 0px 8px $black;
+    color: $black;
+    text-shadow: 0px 0px 8px white;
     text-align: center;
 }
 
