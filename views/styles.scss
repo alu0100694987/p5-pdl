@@ -22,6 +22,22 @@ footer {
     padding: 0.6em 0 0.6em 0;
     box-shadow: inset 0px 10px 60px 0px rgba(255,255,255,0.15);
   }
+  
+#piedepagina {
+    text-align: center;
+    text-shadow: 1.5px 1.5px 1.5px white;
+    color: white;
+  }
+  
+  #piedepagina a {
+    color: white;
+  }
+  
+  #piedepagina a:hover {
+    color: white;
+    text-shadow: 1.5px 1.5px 1.5px black, 0px 4px 1px white;
+    text-decoration: none;
+  }
 
 h1 {
   color: $black;
