@@ -7,13 +7,9 @@
 
 ## Objetivo de la Práctica
 
-El objetivo de la práctica reside en ...
-
-## Realización de la Práctica
-
-* README.md - Cristo [PENDIENTE]
+El objetivo de la práctica reside en la creación de un Analizador Sintáctico Descendente Predictivo Recursivo
 
 ## Despliegue
 
-* Heroku:
-* Pruebas:
+* Heroku: http://analizador-p5pdl.herokuapp.com/
+* Pruebas: http://analizador-p5pdl.herokuapp.com/tests
