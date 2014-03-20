@@ -4,6 +4,11 @@ $white: #fff;
 $blue: #002EB8;
 $main-font: Helvetica, Arial, sans-serif;
 
+@font-face {
+    font-family: 'Andika';
+    src: url("fuentes/Andika-R.ttf");
+}
+
 body {
   background: url(/images/fondo.jpg);
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
