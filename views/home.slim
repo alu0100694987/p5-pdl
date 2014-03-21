@@ -39,7 +39,7 @@ p Implementaci&oacute;n de un parseador predictivo
           if (file) {
             var reader = new FileReader();
             reader.onload = function(e) { 
-              original.innerHTML = e.target.result;
+              editor.setValue(e.target.result);
             }
             var c = reader.readAsText(file);
           }
