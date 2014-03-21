@@ -1,4 +1,6 @@
 main = ()-> 
+
+  editor = $(".CodeMirror")[0].CodeMirror
   source = original.value
   try 
     result = JSON.stringify(parse(source), null, 2)
@@ -6,6 +8,8 @@ main = ()->
     result = """<div class="error">#{result}</div>"""
 
   OUTPUT.innerHTML = result
+
+window.main = main
 
 window.onload = ()-> 
   PARSE.onclick = main
@@ -371,3 +375,5 @@ parse = (input) ->
       "Expected 'end of input' and found '" + 
       input.substr(lookahead.from) + "'"  
   tree
+
+window.parse = parse
