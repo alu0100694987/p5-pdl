@@ -7,7 +7,20 @@
 
 ## Objetivo de la Práctica
 
-El objetivo de la práctica reside en la creación de un Analizador Sintáctico Descendente Predictivo Recursivo
+El objetivo de la práctica reside en la modificación de un Analizador Sintáctico Descendente Predictivo Recursivo, que utilice la gramática del lenguaje PL/0. De manera que se refleje la asociatividad correcta para las diferencias y divisiones.
+Se recurrirá a la utilizacion de 'CoffeeScript' para la escritura del código, 'slim' para las vistas, y 'sass' para la definición del estilo.
+
+## Realización de la Práctica
+
+* README.md - Cristo [OK]
+* Estructura de vistas y ficheros de prueba - Cristo [OK]
+* Modificación de gramática - Cristo [OK]
+* Implementación Analizador - Cristo | Sawan [OK]
+* Code Mirror - Sawan [OK]
+* Pruebas - Sawan [OK]
+* LocalStorage - Cristo | Sawan [OK]
+* Despliegue Heroku - Cristo [OK]
+* Estilo sass - Sawan [OK]
 
 ## Despliegue
 
