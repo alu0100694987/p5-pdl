@@ -29,16 +29,16 @@ String::tokens = ->
   m = undefined # Matching
   result = [] # An array to hold the results.
   tokens =
-    WHITES = /\s+/g
-    ID = /[a-zA-Z_]\w*/g
-    NUM = /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/g
-    STRING = /('(\\.|[^'])*'|"(\\.|[^"])*")/g
-    ONELINECOMMENT = /\/\/.*/g
-    MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g
-    ONECHAROPERATORS = /([=()&|;:,<>{}[\]])/g 
-    MULDIVOP = /[*\/]/g
-    ADDMINOP = /[+-]/g
-    COMPARISON = /[[<>=!]=|[<>]/g
+    WHITES: /\s+/g
+    ID: /[a-zA-Z_]\w*/g
+    NUM: /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/g
+    STRING: /('(\\.|[^'])*'|"(\\.|[^"])*")/g
+    ONELINECOMMENT: /\/\/.*/g
+    MULTIPLELINECOMMENT: /\/[*](.|\n)*?[*]\//g
+    ONECHAROPERATORS: /([=()&|;:,<>{}[\]])/g 
+    MULDIVOP: /[*\/]/g
+    ADDMINOP: /[+-]/g
+    COMPARISON: /[<>=!]=|[<>]/g
 
   RESERVED_WORD = 
     "p": "P"
