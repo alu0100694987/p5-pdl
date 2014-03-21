@@ -78,9 +78,9 @@ String::tokens = ->
     from = i
     
     # Ignore whitespace and comments
-    if m = WHITES.bexec(this) or 
-           (m = ONELINECOMMENT.bexec(this)) or 
-           (m = MULTIPLELINECOMMENT.bexec(this))
+    if m = tokens.WHITES.bexec(this) or 
+           (m = tokens.ONELINECOMMENT.bexec(this)) or 
+           (m = tokens.MULTIPLELINECOMMENT.bexec(this))
       getTok()
     
     # name.
