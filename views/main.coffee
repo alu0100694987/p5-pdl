@@ -1,7 +1,7 @@
 main = ()-> 
 
   editor = $(".CodeMirror")[0].CodeMirror
-  source = original.value
+  source = editor.getValue()
   try 
     result = JSON.stringify(parse(source), null, 2)
   catch result
