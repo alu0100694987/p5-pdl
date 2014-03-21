@@ -74,7 +74,6 @@ String::tokens = ->
   while i < @length
     for key, value of tokens
       value.lastIndex = i
-      return
 
     from = i
     
