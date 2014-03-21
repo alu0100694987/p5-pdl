@@ -103,13 +103,13 @@ String::tokens = ->
     else if m = tokens.STRING.bexec(this)
       result.push make("STRING", getTok().replace(/^["']|["']$/g, ""))
 
-    # addop
+    # addminop
     else if m = tokens.ADDOP.bexec(this)
-      result.push make("ADDOP", getTok())
+      result.push make("ADDMINOP", getTok())
       
-    # multop
+    # muldivop
     else if m = tokens.MULTOP.bexec(this)
-      result.push make("MULTOP", getTok())
+      result.push make("MULDIVOP", getTok())
       
     # comparison
     else if m = tokens.COMPARISON.bexec(this)
