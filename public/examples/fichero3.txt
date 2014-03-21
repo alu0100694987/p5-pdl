@@ -1,8 +1,9 @@
 procedure koala;
 begin
-  p = c;
-  call p;
+  s = c;
+  call t;
   if a >= b then
     while c == d do
       d = 4 - 3 - 1
-end.
+end;
+f = 4.

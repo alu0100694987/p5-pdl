@@ -7,10 +7,6 @@ var
   c;
 procedure proc1;
 var w;
+p pinguino;
 
-const x = 1;
-var y = 2;
-procedure proc2;
-var z;
-
-call proc1.
+final = ahora.
