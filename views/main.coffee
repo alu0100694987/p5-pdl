@@ -104,11 +104,11 @@ String::tokens = ->
       result.push make("STRING", getTok().replace(/^["']|["']$/g, ""))
 
     # addminop
-    else if m = tokens.ADDOP.bexec(this)
+    else if m = tokens.ADDMINOP.bexec(this)
       result.push make("ADDMINOP", getTok())
       
     # muldivop
-    else if m = tokens.MULTOP.bexec(this)
+    else if m = tokens.MULDIVOP.bexec(this)
       result.push make("MULDIVOP", getTok())
       
     # comparison
