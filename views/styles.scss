@@ -36,20 +36,22 @@ footer {
   }
   
 #piedepagina {
-    text-align: center;
-    text-shadow: 1.5px 1.5px 1.5px white;
-    color: black;
-  }
+
+  text-align: center;
+  text-shadow: 1.5px 1.5px 1.5px white;
+  color: black;
+  margin-top: 50px;
   
-  #piedepagina a {
+  a {
     color: blue;
   }
   
-  #piedepagina a:hover {
+  a:hover {
     color: white;
     text-shadow: 1.5px 1.5px 1.5px black, 0px 4px 1px blue;
     text-decoration: none;
   }
+}
 
 h1 {
   font-family: Andika;

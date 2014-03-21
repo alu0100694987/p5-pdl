@@ -1,12 +1,12 @@
 var assert = chai.assert;
 
 suite('Resultados de los tests: ', function() {
-   test('Prueba 1', function() {
+   test('Prueba if', function() {
         original.value = "if name == Sawan then personality = PIMP";
         main();
 		assert.equal(OUTPUT.innerHTML, '{\n  "type": "IF",\n  "left": {\n    "type": "==",\n    "left": {\n      "type": "ID",\n      "value": "name"\n    },\n    "right": {\n      "type": "ID",\n      "value": "Sawan"\n    }\n  },\n  "right": {\n    "type": "=",\n    "left": {\n      "type": "ID",\n      "value": "personality"\n    },\n    "right": {\n      "type": "ID",\n      "value": "PIMP"\n    }\n  }\n}');
     });
-    test('Prueba de un statement', function() {
+    test('Prueba statement', function() {
         original.value = "while 52 > 4 do call funcion";
         main();
 		assert.equal(OUTPUT.innerHTML, '{\n  "type": "WHILE",\n  "left": {\n    "type": "&gt;",\n    "left": {\n      "type": "NUM",\n      "value": 52\n    },\n    "right": {\n      "type": "NUM",\n      "value": 4\n    }\n  },\n  "right": {\n    "type": "call",\n    "rigth": {\n      "type": "ID",\n      "value": "funcion"\n    }\n  }\n}');
