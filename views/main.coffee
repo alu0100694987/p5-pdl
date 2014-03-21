@@ -179,7 +179,7 @@ parse = (input) ->
           type: "="
           left: left
           right: right
-        
+        result
       r_bloque.push constant()
       while lookahead and lookahead.type is ","
         match ","
