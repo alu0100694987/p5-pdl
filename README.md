@@ -18,7 +18,6 @@ Se recurrirá a la utilizacion de 'CoffeeScript' para la escritura del código, 's
 * Implementación Analizador - Cristo | Sawan [OK]
 * Code Mirror - Sawan [OK]
 * Pruebas - Sawan [OK]
-* LocalStorage - Cristo | Sawan [OK]
 * Despliegue Heroku - Cristo [OK]
 * Estilo sass - Sawan [OK]
 
