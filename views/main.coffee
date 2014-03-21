@@ -39,7 +39,7 @@ String::tokens = ->
     STRING: /('(\\.|[^'])*'|"(\\.|[^"])*")/g
     ONELINECOMMENT: /\/\/.*/g
     MULTIPLELINECOMMENT: /\/[*](.|\n)*?[*]\//g
-    ONECHAROPERATORS: /([=()&|;:,<>{}[\]])/g 
+    ONECHAROPERATORS: /([\.=()&|;:,<>{}[\]])/g 
     MULDIVOP: /[*\/]/g
     ADDMINOP: /[+-]/g
     COMPARISON: /[<>=!]=|[<>]/g

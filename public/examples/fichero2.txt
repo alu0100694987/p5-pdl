@@ -1,2 +1,16 @@
-a = 4*2;
-p a
+const
+  pinguino = 42,
+  t = 12;
+var
+  a,
+  b,
+  c;
+procedure proc1;
+var w;
+
+const x = 1;
+var y = 2;
+procedure proc2;
+var z;
+
+call proc1.

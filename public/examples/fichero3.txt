@@ -1,3 +1,8 @@
-a = 4*2;
-b = 2*(a+1);
-p b
+procedure koala;
+begin
+  p = c;
+  call p;
+  if a >= b then
+    while c == d do
+      d = 4 - 3 - 1
+end.
